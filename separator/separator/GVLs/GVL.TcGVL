@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
+  <GVL Name="GVL" Id="{0d1e2320-30f2-464b-a5b5-3b89cc5b7155}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	// setpoints
+	PROD_RATE_SP					:	LREAL	:= 22.89;	// production rate
+	L_STRIPPER_SP					:	LREAL	:= 50.0;	// stripper level
+	L_SEPARATOR_SP					:	LREAL	:= 50.0;	// separator level
+	L_REACTOR_SP					:	LREAL	:= 65.0;	// reactor level
+	P_REACTOR_SP					:	LREAL;	// reactor pressure
+	PCT_G_SP						:	LREAL;	// Mole percent G
+	YA_SP							: 	LREAL;	// yA 
+	YAC_SP							:	LREAL;	// yAC
+	T_REACTOR_SP					:	LREAL;	// reactor temperature
+	RECYC_VALVE_SP					:	LREAL;	// Recycle valve position
+	STEAM_VALVE_SP					:	LREAL;	// Steam valve position
+	L_AGITATOR_SP					:	LREAL;	// agitator setting		
+
+	// actual production metrics
+	COST						:	LREAL :=0.0;
+	PctG						:	LREAL :=0.0;
+
+	// process variables
+	XMEAS						:	ARRAY[1..41] OF LREAL;
+	XMV							:	ARRAY[1..12] OF LREAL;
+	
+	// intermediate variables
+	SEP_TEMP_SP					:	LREAL;	// separator temperaure setpoint
+	RI							:	ARRAY[1..6] OF LREAL;	// ratio trimming outputs
+	EADJ						:	LREAL;	// adjustment to production rate
+	PCTG_SP						:	LREAL;	// setpoint for precent G
+	
+	// shutdown indicator
+	SD_FLAG						: 	BOOL	:= FALSE;
+
+	// operating time
+	OPTIME					:	LREAL := 0.0;		
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>
