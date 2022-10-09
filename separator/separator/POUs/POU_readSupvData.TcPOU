@@ -1,18 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
-  <POU Name="POU_writeReactorToSupvData" Id="{5e7ac2b2-7ed4-47ff-8a64-ec6be7ac94e9}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM POU_writeReactorToSupvData
+  <POU Name="POU_readSupvData" Id="{c8dbc9b0-45af-4c0a-8d1c-7f70f78940a5}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM POU_readSupvData
 VAR
 	sNetId: T_AmsNetId := SUPVams.sNetId;	// '5.30.23.91.1.1';
-	nPort: T_AmsPort := SUPVams.nPort; 		// 851	
-
-	FB_WriteAmsValue_XMEAS: FB_WriteAmsValue;
-	FB_WriteAmsValue_XMV: FB_WriteAmsValue;
-	bXMEASWriteError: BOOL;
-	nXMEASWriteErrorId: UDINT;
-	bXMVWriteError: BOOL;
-	nXMVWriteErrorId: UDINT;
+	nPort: T_AmsPort := SUPVams.nPort; 		// 851
+	
+	FB_ReadAmsValue_Fp: FB_ReadAmsValue;
+	FB_ReadAmsValue_SepLevel: FB_ReadAmsValue;
+	FB_ReadAmsValue_R5: FB_ReadAmsValue;
+	nFpReadErrorId: UDINT;
+	bFpReadError: BOOL;
+	nSepLevelReadErrorId: UDINT;
+	nR5ReadErrorId: UDINT;
+	bSepLevelReadError: BOOL;
+	bR5ReadError: BOOL;
 END_VAR
+
 ]]></Declaration>
     <Implementation>
       <NWL>
@@ -36,7 +40,7 @@ END_VAR
                       <o n="OutputItems" t="OutputItemList">
                         <l2 n="OutputItems" cet="Operand">
                           <o>
-                            <v n="Operand">"bXMEASWriteError"</v>
+                            <v n="Operand">"bFpReadError"</v>
                             <v n="Type">"BOOL"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -49,7 +53,7 @@ END_VAR
                             <v n="LValue">true</v>
                             <v n="Boolean">false</v>
                             <v n="IsInstance">false</v>
-                            <v n="Id">109L</v>
+                            <v n="Id">279L</v>
                           </o>
                         </l2>
                       </o>
@@ -59,10 +63,10 @@ END_VAR
                         <v n="Extensible">false</v>
                       </o>
                       <o n="RValue" t="BoxTreeBox">
-                        <v n="BoxType">"FB_WriteAmsValue"</v>
+                        <v n="BoxType">"FB_ReadAmsValue"</v>
                         <o n="Instance" t="Operand">
-                          <v n="Operand">"FB_WriteAmsValue_XMEAS"</v>
-                          <v n="Type">"FB_WriteAmsValue"</v>
+                          <v n="Operand">"FB_ReadAmsValue_Fp"</v>
+                          <v n="Type">"FB_ReadAmsValue"</v>
                           <v n="Comment">""</v>
                           <v n="SymbolComment">""</v>
                           <v n="Address">""</v>
@@ -74,13 +78,13 @@ END_VAR
                           <v n="LValue">false</v>
                           <v n="Boolean">false</v>
                           <v n="IsInstance">true</v>
-                          <v n="Id">103L</v>
+                          <v n="Id">275L</v>
                         </o>
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
                             <n />
                             <o>
-                              <v n="Operand">"nXMEASWriteErrorId"</v>
+                              <v n="Operand">"nFpReadErrorId"</v>
                               <v n="Type">"UDINT"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -93,7 +97,7 @@ END_VAR
                               <v n="LValue">true</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">105L</v>
+                              <v n="Id">277L</v>
                             </o>
                           </l2>
                         </o>
@@ -119,13 +123,13 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">64L</v>
+                              <v n="Id">118L</v>
                             </o>
-                            <v n="Id">63L</v>
+                            <v n="Id">117L</v>
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"SUPVams.sNetId"</v>
+                              <v n="Operand">"sNetId"</v>
                               <v n="Type">"T_AmsNetId"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -138,13 +142,13 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">66L</v>
+                              <v n="Id">120L</v>
                             </o>
-                            <v n="Id">65L</v>
+                            <v n="Id">119L</v>
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"SUPVams.nPort"</v>
+                              <v n="Operand">"nPort"</v>
                               <v n="Type">"T_AmsPort"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -157,14 +161,14 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">68L</v>
+                              <v n="Id">122L</v>
                             </o>
-                            <v n="Id">67L</v>
+                            <v n="Id">121L</v>
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"'GVL.XMEAS_FROM_REACTOR'"</v>
-                              <v n="Type">"STRING(INT#22)"</v>
+                              <v n="Operand">"'GVL.Fp'"</v>
+                              <v n="Type">"STRING(INT#6)"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -176,14 +180,14 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">70L</v>
+                              <v n="Id">124L</v>
                             </o>
-                            <v n="Id">69L</v>
+                            <v n="Id">123L</v>
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"ADR(GVL.XMEAS_TO_SUPV)"</v>
-                              <v n="Type">"POINTER TO ARRAY [1..10] OF LREAL"</v>
+                              <v n="Operand">"ADR(GVL.Fp)"</v>
+                              <v n="Type">"POINTER TO LREAL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -195,13 +199,13 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">72L</v>
+                              <v n="Id">126L</v>
                             </o>
-                            <v n="Id">71L</v>
+                            <v n="Id">125L</v>
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"sizeof(GVL.XMEAS_TO_SUPV)"</v>
+                              <v n="Operand">"sizeof(GVL.Fp)"</v>
                               <v n="Type">"UINT"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -214,9 +218,9 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">74L</v>
+                              <v n="Id">128L</v>
                             </o>
-                            <v n="Id">73L</v>
+                            <v n="Id">127L</v>
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
@@ -233,9 +237,9 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">76L</v>
+                              <v n="Id">130L</v>
                             </o>
-                            <v n="Id">75L</v>
+                            <v n="Id">129L</v>
                           </o>
                         </l2>
                         <o n="InputParam" t="ParamList">
@@ -244,9 +248,9 @@ END_VAR
                             <v>sNetId</v>
                             <v>nPort</v>
                             <v>sVarName</v>
-                            <v>nSrcAddr</v>
-                            <v>nSrcLen</v>
-                            <v>tWriteTimeout</v>
+                            <v>nDestAddr</v>
+                            <v>nDestLen</v>
+                            <v>tReadTimeout</v>
                           </l2>
                           <l2 n="Types" cet="String">
                             <v>TIME</v>
@@ -260,8 +264,8 @@ END_VAR
                         </o>
                         <o n="OutputParam" t="ParamList">
                           <l2 n="Names" cet="String">
-                            <v>bWriteError</v>
-                            <v>nWriteErrorId</v>
+                            <v>bReadError</v>
+                            <v>nReadErrorId</v>
                           </l2>
                           <l2 n="Types" cet="String">
                             <v>BOOL</v>
@@ -274,15 +278,15 @@ END_VAR
                         <n n="STSnippet" />
                         <v n="ContainsExtensibleInputs">false</v>
                         <v n="ProvidesSTSnippet">false</v>
-                        <v n="Id">104L</v>
+                        <v n="Id">276L</v>
                       </o>
-                      <v n="Id">110L</v>
+                      <v n="Id">280L</v>
                     </o>
                     <o>
                       <o n="OutputItems" t="OutputItemList">
                         <l2 n="OutputItems" cet="Operand">
                           <o>
-                            <v n="Operand">"bXMVWriteError"</v>
+                            <v n="Operand">"bSepLevelReadError"</v>
                             <v n="Type">"BOOL"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -295,7 +299,7 @@ END_VAR
                             <v n="LValue">true</v>
                             <v n="Boolean">false</v>
                             <v n="IsInstance">false</v>
-                            <v n="Id">113L</v>
+                            <v n="Id">286L</v>
                           </o>
                         </l2>
                       </o>
@@ -305,10 +309,10 @@ END_VAR
                         <v n="Extensible">false</v>
                       </o>
                       <o n="RValue" t="BoxTreeBox">
-                        <v n="BoxType">"FB_WriteAmsValue"</v>
+                        <v n="BoxType">"FB_ReadAmsValue"</v>
                         <o n="Instance" t="Operand">
-                          <v n="Operand">"FB_WriteAmsValue_XMV"</v>
-                          <v n="Type">"FB_WriteAmsValue"</v>
+                          <v n="Operand">"FB_ReadAmsValue_SepLevel"</v>
+                          <v n="Type">"FB_ReadAmsValue"</v>
                           <v n="Comment">""</v>
                           <v n="SymbolComment">""</v>
                           <v n="Address">""</v>
@@ -320,13 +324,13 @@ END_VAR
                           <v n="LValue">false</v>
                           <v n="Boolean">false</v>
                           <v n="IsInstance">true</v>
-                          <v n="Id">106L</v>
+                          <v n="Id">283L</v>
                         </o>
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
                             <n />
                             <o>
-                              <v n="Operand">"nXMVWriteErrorId"</v>
+                              <v n="Operand">"nSepLevelReadErrorId"</v>
                               <v n="Type">"UDINT"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -339,7 +343,7 @@ END_VAR
                               <v n="LValue">true</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">108L</v>
+                              <v n="Id">274L</v>
                             </o>
                           </l2>
                         </o>
@@ -365,13 +369,13 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">87L</v>
+                              <v n="Id">224L</v>
                             </o>
-                            <v n="Id">86L</v>
+                            <v n="Id">223L</v>
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"SUPVams.sNetId"</v>
+                              <v n="Operand">"sNetId"</v>
                               <v n="Type">"T_AmsNetId"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -384,13 +388,13 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">89L</v>
+                              <v n="Id">226L</v>
                             </o>
-                            <v n="Id">88L</v>
+                            <v n="Id">225L</v>
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"SUPVams.nPort"</v>
+                              <v n="Operand">"nPort"</v>
                               <v n="Type">"T_AmsPort"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -403,14 +407,14 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">91L</v>
+                              <v n="Id">228L</v>
                             </o>
-                            <v n="Id">90L</v>
+                            <v n="Id">227L</v>
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"'GVL.XMV_FROM_REACTOR'"</v>
-                              <v n="Type">"STRING(INT#20)"</v>
+                              <v n="Operand">"'GVL.L_SEPARATOR_SP'"</v>
+                              <v n="Type">"STRING(INT#18)"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -422,14 +426,14 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">93L</v>
+                              <v n="Id">230L</v>
                             </o>
-                            <v n="Id">92L</v>
+                            <v n="Id">229L</v>
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"ADR(GVL.XMV_TO_SUPV)"</v>
-                              <v n="Type">"POINTER TO ARRAY [1..5] OF LREAL"</v>
+                              <v n="Operand">"ADR(GVL.L_SEPARATOR_SP)"</v>
+                              <v n="Type">"POINTER TO LREAL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -441,13 +445,13 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">95L</v>
+                              <v n="Id">232L</v>
                             </o>
-                            <v n="Id">94L</v>
+                            <v n="Id">231L</v>
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"sizeof(GVL.XMV_TO_SUPV)"</v>
+                              <v n="Operand">"sizeof(GVL.L_SEPARATOR_SP)"</v>
                               <v n="Type">"UINT"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -460,9 +464,9 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">97L</v>
+                              <v n="Id">234L</v>
                             </o>
-                            <v n="Id">96L</v>
+                            <v n="Id">233L</v>
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
@@ -479,9 +483,9 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">99L</v>
+                              <v n="Id">236L</v>
                             </o>
-                            <v n="Id">98L</v>
+                            <v n="Id">235L</v>
                           </o>
                         </l2>
                         <o n="InputParam" t="ParamList">
@@ -490,9 +494,9 @@ END_VAR
                             <v>sNetId</v>
                             <v>nPort</v>
                             <v>sVarName</v>
-                            <v>nSrcAddr</v>
-                            <v>nSrcLen</v>
-                            <v>tWriteTimeout</v>
+                            <v>nDestAddr</v>
+                            <v>nDestLen</v>
+                            <v>tReadTimeout</v>
                           </l2>
                           <l2 n="Types" cet="String">
                             <v>TIME</v>
@@ -506,8 +510,8 @@ END_VAR
                         </o>
                         <o n="OutputParam" t="ParamList">
                           <l2 n="Names" cet="String">
-                            <v>bWriteError</v>
-                            <v>nWriteErrorId</v>
+                            <v>bReadError</v>
+                            <v>nReadErrorId</v>
                           </l2>
                           <l2 n="Types" cet="String">
                             <v>BOOL</v>
@@ -520,13 +524,259 @@ END_VAR
                         <n n="STSnippet" />
                         <v n="ContainsExtensibleInputs">false</v>
                         <v n="ProvidesSTSnippet">false</v>
-                        <v n="Id">107L</v>
+                        <v n="Id">284L</v>
                       </o>
-                      <v n="Id">114L</v>
+                      <v n="Id">287L</v>
+                    </o>
+                    <o>
+                      <o n="OutputItems" t="OutputItemList">
+                        <l2 n="OutputItems" cet="Operand">
+                          <o>
+                            <v n="Operand">"bR5ReadError"</v>
+                            <v n="Type">"BOOL"</v>
+                            <v n="Comment">""</v>
+                            <v n="SymbolComment">""</v>
+                            <v n="Address">""</v>
+                            <o n="Flags" t="Flags">
+                              <v n="Flags">0</v>
+                              <v n="Fixed">false</v>
+                              <v n="Extensible">false</v>
+                            </o>
+                            <v n="LValue">true</v>
+                            <v n="Boolean">false</v>
+                            <v n="IsInstance">false</v>
+                            <v n="Id">289L</v>
+                          </o>
+                        </l2>
+                      </o>
+                      <o n="Flags" t="Flags">
+                        <v n="Flags">0</v>
+                        <v n="Fixed">false</v>
+                        <v n="Extensible">false</v>
+                      </o>
+                      <o n="RValue" t="BoxTreeBox">
+                        <v n="BoxType">"FB_ReadAmsValue"</v>
+                        <o n="Instance" t="Operand">
+                          <v n="Operand">"FB_ReadAmsValue_R5"</v>
+                          <v n="Type">"FB_ReadAmsValue"</v>
+                          <v n="Comment">""</v>
+                          <v n="SymbolComment">""</v>
+                          <v n="Address">""</v>
+                          <o n="Flags" t="Flags">
+                            <v n="Flags">0</v>
+                            <v n="Fixed">false</v>
+                            <v n="Extensible">false</v>
+                          </o>
+                          <v n="LValue">false</v>
+                          <v n="Boolean">false</v>
+                          <v n="IsInstance">true</v>
+                          <v n="Id">269L</v>
+                        </o>
+                        <o n="OutputItems" t="OutputItemList">
+                          <l2 n="OutputItems" cet="Operand">
+                            <n />
+                            <o>
+                              <v n="Operand">"nR5ReadErrorId"</v>
+                              <v n="Type">"UDINT"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">true</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">271L</v>
+                            </o>
+                          </l2>
+                        </o>
+                        <o n="Flags" t="Flags">
+                          <v n="Flags">0</v>
+                          <v n="Fixed">true</v>
+                          <v n="Extensible">false</v>
+                        </o>
+                        <n n="InputFlags" />
+                        <l2 n="InputItems" cet="BoxTreeOperand">
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"T#900ms"</v>
+                              <v n="Type">"TIME"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">254L</v>
+                            </o>
+                            <v n="Id">253L</v>
+                          </o>
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"sNetId"</v>
+                              <v n="Type">"T_AmsNetId"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">256L</v>
+                            </o>
+                            <v n="Id">255L</v>
+                          </o>
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"nPort"</v>
+                              <v n="Type">"T_AmsPort"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">258L</v>
+                            </o>
+                            <v n="Id">257L</v>
+                          </o>
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"'GVL.RI[5]'"</v>
+                              <v n="Type">"STRING(INT#9)"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">260L</v>
+                            </o>
+                            <v n="Id">259L</v>
+                          </o>
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"ADR(GVL.RI[5])"</v>
+                              <v n="Type">"POINTER TO LREAL"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">262L</v>
+                            </o>
+                            <v n="Id">261L</v>
+                          </o>
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"sizeof(GVL.RI[5])"</v>
+                              <v n="Type">"UINT"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">264L</v>
+                            </o>
+                            <v n="Id">263L</v>
+                          </o>
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"T#5000ms"</v>
+                              <v n="Type">"TIME"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">266L</v>
+                            </o>
+                            <v n="Id">265L</v>
+                          </o>
+                        </l2>
+                        <o n="InputParam" t="ParamList">
+                          <l2 n="Names" cet="String">
+                            <v>tUpdate</v>
+                            <v>sNetId</v>
+                            <v>nPort</v>
+                            <v>sVarName</v>
+                            <v>nDestAddr</v>
+                            <v>nDestLen</v>
+                            <v>tReadTimeout</v>
+                          </l2>
+                          <l2 n="Types" cet="String">
+                            <v>TIME</v>
+                            <v>T_AmsNetId</v>
+                            <v>T_AmsPort</v>
+                            <v>STRING(255)</v>
+                            <v>PVOID</v>
+                            <v>UDINT</v>
+                            <v>TIME</v>
+                          </l2>
+                        </o>
+                        <o n="OutputParam" t="ParamList">
+                          <l2 n="Names" cet="String">
+                            <v>bReadError</v>
+                            <v>nReadErrorId</v>
+                          </l2>
+                          <l2 n="Types" cet="String">
+                            <v>BOOL</v>
+                            <v>UDINT</v>
+                          </l2>
+                        </o>
+                        <v n="CallType" t="Operator">FunctionBlock</v>
+                        <v n="EN">false</v>
+                        <v n="ENO">false</v>
+                        <n n="STSnippet" />
+                        <v n="ContainsExtensibleInputs">false</v>
+                        <v n="ProvidesSTSnippet">false</v>
+                        <v n="Id">270L</v>
+                      </o>
+                      <v n="Id">290L</v>
                     </o>
                   </l2>
                   <l2 n="Connectors" />
-                  <v n="Id">5L</v>
+                  <v n="Id">114L</v>
                 </o>
               </l2>
               <v n="BranchCounter">0</v>

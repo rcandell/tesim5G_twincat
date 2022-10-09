@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.11">
-  <POU Name="POU_writeReactorToSupvData" Id="{5e7ac2b2-7ed4-47ff-8a64-ec6be7ac94e9}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM POU_writeReactorToSupvData
+  <POU Name="POU_writeSeparatorToSupvData" Id="{5e7ac2b2-7ed4-47ff-8a64-ec6be7ac94e9}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM POU_writeSeparatorToSupvData
 VAR
 	sNetId: T_AmsNetId := SUPVams.sNetId;	// '5.30.23.91.1.1';
 	nPort: T_AmsPort := SUPVams.nPort; 		// 851	
 
 	FB_WriteAmsValue_XMEAS: FB_WriteAmsValue;
 	FB_WriteAmsValue_XMV: FB_WriteAmsValue;
-	bXMEASWriteError: BOOL;
 	nXMEASWriteErrorId: UDINT;
+	bXMEASWriteError: BOOL;
 	bXMVWriteError: BOOL;
 	nXMVWriteErrorId: UDINT;
 END_VAR
@@ -49,7 +49,7 @@ END_VAR
                             <v n="LValue">true</v>
                             <v n="Boolean">false</v>
                             <v n="IsInstance">false</v>
-                            <v n="Id">109L</v>
+                            <v n="Id">117L</v>
                           </o>
                         </l2>
                       </o>
@@ -74,7 +74,7 @@ END_VAR
                           <v n="LValue">false</v>
                           <v n="Boolean">false</v>
                           <v n="IsInstance">true</v>
-                          <v n="Id">103L</v>
+                          <v n="Id">110L</v>
                         </o>
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
@@ -93,7 +93,7 @@ END_VAR
                               <v n="LValue">true</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">105L</v>
+                              <v n="Id">112L</v>
                             </o>
                           </l2>
                         </o>
@@ -163,8 +163,8 @@ END_VAR
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"'GVL.XMEAS_FROM_REACTOR'"</v>
-                              <v n="Type">"STRING(INT#22)"</v>
+                              <v n="Operand">"'GVL.XMEAS_FROM_SEPARATOR'"</v>
+                              <v n="Type">"STRING(INT#24)"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -183,7 +183,7 @@ END_VAR
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"ADR(GVL.XMEAS_TO_SUPV)"</v>
-                              <v n="Type">"POINTER TO ARRAY [1..10] OF LREAL"</v>
+                              <v n="Type">"POINTER TO ARRAY [1..16] OF LREAL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -201,7 +201,7 @@ END_VAR
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"sizeof(GVL.XMEAS_TO_SUPV)"</v>
+                              <v n="Operand">"SIZEOF(GVL.XMEAS_TO_SUPV)"</v>
                               <v n="Type">"UINT"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -274,9 +274,9 @@ END_VAR
                         <n n="STSnippet" />
                         <v n="ContainsExtensibleInputs">false</v>
                         <v n="ProvidesSTSnippet">false</v>
-                        <v n="Id">104L</v>
+                        <v n="Id">111L</v>
                       </o>
-                      <v n="Id">110L</v>
+                      <v n="Id">118L</v>
                     </o>
                     <o>
                       <o n="OutputItems" t="OutputItemList">
@@ -295,7 +295,7 @@ END_VAR
                             <v n="LValue">true</v>
                             <v n="Boolean">false</v>
                             <v n="IsInstance">false</v>
-                            <v n="Id">113L</v>
+                            <v n="Id">120L</v>
                           </o>
                         </l2>
                       </o>
@@ -320,7 +320,7 @@ END_VAR
                           <v n="LValue">false</v>
                           <v n="Boolean">false</v>
                           <v n="IsInstance">true</v>
-                          <v n="Id">106L</v>
+                          <v n="Id">113L</v>
                         </o>
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
@@ -339,7 +339,7 @@ END_VAR
                               <v n="LValue">true</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">108L</v>
+                              <v n="Id">115L</v>
                             </o>
                           </l2>
                         </o>
@@ -365,9 +365,9 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">87L</v>
+                              <v n="Id">94L</v>
                             </o>
-                            <v n="Id">86L</v>
+                            <v n="Id">93L</v>
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
@@ -384,9 +384,9 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">89L</v>
+                              <v n="Id">96L</v>
                             </o>
-                            <v n="Id">88L</v>
+                            <v n="Id">95L</v>
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
@@ -403,14 +403,14 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">91L</v>
+                              <v n="Id">98L</v>
                             </o>
-                            <v n="Id">90L</v>
+                            <v n="Id">97L</v>
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"'GVL.XMV_FROM_REACTOR'"</v>
-                              <v n="Type">"STRING(INT#20)"</v>
+                              <v n="Operand">"'GVL.XMV_FROM_SEPARATOR'"</v>
+                              <v n="Type">"STRING(INT#22)"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -422,14 +422,14 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">93L</v>
+                              <v n="Id">100L</v>
                             </o>
-                            <v n="Id">92L</v>
+                            <v n="Id">99L</v>
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
                               <v n="Operand">"ADR(GVL.XMV_TO_SUPV)"</v>
-                              <v n="Type">"POINTER TO ARRAY [1..5] OF LREAL"</v>
+                              <v n="Type">"POINTER TO ARRAY [1..3] OF LREAL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -441,9 +441,9 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">95L</v>
+                              <v n="Id">102L</v>
                             </o>
-                            <v n="Id">94L</v>
+                            <v n="Id">101L</v>
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
@@ -460,9 +460,9 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">97L</v>
+                              <v n="Id">104L</v>
                             </o>
-                            <v n="Id">96L</v>
+                            <v n="Id">103L</v>
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
@@ -479,9 +479,9 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">99L</v>
+                              <v n="Id">106L</v>
                             </o>
-                            <v n="Id">98L</v>
+                            <v n="Id">105L</v>
                           </o>
                         </l2>
                         <o n="InputParam" t="ParamList">
@@ -520,9 +520,9 @@ END_VAR
                         <n n="STSnippet" />
                         <v n="ContainsExtensibleInputs">false</v>
                         <v n="ProvidesSTSnippet">false</v>
-                        <v n="Id">107L</v>
+                        <v n="Id">114L</v>
                       </o>
-                      <v n="Id">114L</v>
+                      <v n="Id">121L</v>
                     </o>
                   </l2>
                   <l2 n="Connectors" />

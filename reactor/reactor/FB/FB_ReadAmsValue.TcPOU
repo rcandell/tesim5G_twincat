@@ -15,13 +15,13 @@ VAR_INPUT
 END_VAR
 
 VAR_OUTPUT
+
+	bReadError		: BOOL := FALSE;
+	nReadErrorId	: UDINT;
+	
 END_VAR
 
 VAR
-	
-	bReadError		: BOOL := FALSE;
-	nReadErrorId	: UDINT;
-	PT_Read			: TIME := T#5S;
 	
 	ET_Read			: TIME := T#0MS;
 	bReadEnable		: BOOL := FALSE;
@@ -204,7 +204,7 @@ END_VAR
                               </o>
                               <o>
                                 <o n="Operand" t="Operand">
-                                  <v n="Operand">"PT_Read"</v>
+                                  <v n="Operand">"tUpdate"</v>
                                   <v n="Type">"TIME"</v>
                                   <v n="Comment">""</v>
                                   <v n="SymbolComment">""</v>
