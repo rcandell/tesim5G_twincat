@@ -8,18 +8,20 @@ VAR_GLOBAL
 	L_STRIPPER_SP					:	LREAL	:= 50.0;	// stripper level
 	L_SEPARATOR_SP					:	LREAL	:= 50.0;	// separator level
 	L_REACTOR_SP					:	LREAL	:= 65.0;	// reactor level
-	P_REACTOR_SP					:	LREAL;	// reactor pressure
-	PCT_G_SP						:	LREAL;	// Mole percent G
-	YA_SP							: 	LREAL;	// yA 
-	YAC_SP							:	LREAL;	// yAC
-	T_REACTOR_SP					:	LREAL;	// reactor temperature
-	RECYC_VALVE_SP					:	LREAL;	// Recycle valve position
-	STEAM_VALVE_SP					:	LREAL;	// Steam valve position
-	L_AGITATOR_SP					:	LREAL;	// agitator setting		
+	P_REACTOR_SP					:	LREAL	:= 2800;	// reactor pressure
+	PCT_G_SP						:	LREAL	:= 53.8;	// Mole percent G
+	YA_SP							: 	LREAL	:= (100.0*32.2/(32.2+18.8));	// yA 
+	YAC_SP							:	LREAL	:= 32.2+18.8;	// yAC
+	T_REACTOR_SP					:	LREAL	:= 122.9;	// reactor temperature
+	RECYC_VALVE_SP					:	LREAL	:= 0.0;		// Recycle valve position
+	STEAM_VALVE_SP					:	LREAL	:= 0.0;		// Steam valve position
+	L_AGITATOR_SP					:	LREAL	:= 100.0;	// agitator setting		
 	
 	// Intermediate values
 	Fp							:	LREAL; // production rate used by reactor, stripper, and separator
 	SepTempSP					:	LREAL; // tmp sp used by separator
+	RI							:	ARRAY[1..7] OF LREAL;	// ratio trimming outputs
+	EADJ						:	LREAL;	// adjustment to production rate
 
 	// actual production metrics
 	COST						:	LREAL :=0.0;
@@ -27,26 +29,21 @@ VAR_GLOBAL
 
 	// process variables
 	XMEAS						:	ARRAY[1..41] OF LREAL;
-	XMEAS_FROM_REACTOR			:	ARRAY[1..10] OF LREAL;
+	XMEAS_FROM_REACTOR			:	ARRAY[1..16] OF LREAL;
 	XMEAS_FROM_SEPARATOR		:	ARRAY[1..16] OF LREAL;
 	XMEAS_FROM_STRIPPER			:	ARRAY[1..10] OF LREAL;
 	
 	XMV							:	ARRAY[1..12] OF LREAL;
-	XMV_FROM_REACTOR			:	ARRAY[1..5] OF LREAL;
+	XMV_FROM_REACTOR			:	ARRAY[1..7] OF LREAL;
 	XMV_FROM_SEPARATOR			:	ARRAY[1..3] OF LREAL;
-	XMV_FROM_STRIPPER			:	ARRAY[1..5] OF LREAL;
-	
-	// intermediate variables
-	SEP_TEMP_SP					:	LREAL;	// separator temperaure setpoint
-	RI							:	ARRAY[1..6] OF LREAL;	// ratio trimming outputs
-	EADJ						:	LREAL;	// adjustment to production rate
-	PCTG_SP						:	LREAL;	// setpoint for precent G
+	XMV_FROM_STRIPPER			:	ARRAY[1..2] OF LREAL;
 	
 	// shutdown indicator
 	SD_FLAG						: 	BOOL	:= FALSE;
+	
+	// Disturbance vector
+	IDV							:	ARRAY[1..20] OF LREAL	:= [0,0,0,0,0,0,0,0,0,0,0,0];
 
-	// operating time
-	OPTIME					:	LREAL := 0.0;	
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

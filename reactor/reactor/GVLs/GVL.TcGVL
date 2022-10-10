@@ -18,23 +18,15 @@ VAR_GLOBAL
 	L_AGITATOR_SP					:	LREAL;	// agitator setting		
 	
 	// Intermediate values
-	Fp							:	LREAL; 	
-
-	// actual production metrics
-	COST						:	LREAL :=0.0;
-	PctG						:	LREAL :=0.0;
+	Fp							:	LREAL; 
+	RI							:	ARRAY[1..6] OF LREAL;	// ratio trimming outputs	
 
 	// process variables
 	XMEAS						:	ARRAY[1..41] OF LREAL;
-	XMEAS_TO_SUPV				:	ARRAY[1..10] OF LREAL;
+	XMEAS_TO_SUPV				:	ARRAY[1..16] OF LREAL;
 	XMV							:	ARRAY[1..12] OF LREAL;
-	XMV_TO_SUPV					:	ARRAY[1..5] OF LREAL;
-	
-	// intermediate variables
-	SEP_TEMP_SP					:	LREAL;	// separator temperaure setpoint
-	RI							:	ARRAY[1..6] OF LREAL;	// ratio trimming outputs
-	EADJ						:	LREAL;	// adjustment to production rate
-	PCTG_SP						:	LREAL;	// setpoint for precent G
+	XMV_TO_SUPV					:	ARRAY[1..7] OF LREAL;
+
 	
 	// shutdown indicator
 	SD_FLAG						: 	BOOL	:= FALSE;

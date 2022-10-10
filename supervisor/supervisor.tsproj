@@ -10,7 +10,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{AEF20F37-D055-4E2C-BDA5-15E829699553}" Name="supervisor" PrjFilePath="supervisor\supervisor.plcproj" TmcFilePath="supervisor\supervisor.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="supervisor\supervisor.tmc" TmcHash="{B9E75ABC-77C0-B2DA-AB1E-6AF3FF9E0759}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="supervisor\supervisor.tmc" TmcHash="{0F39F06E-3D9A-F404-A95A-A7404690E9D1}">
 					<Name>supervisor Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Contexts>

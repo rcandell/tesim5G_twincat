@@ -3,22 +3,23 @@
   <POU Name="POU_readSupvData" Id="{c8dbc9b0-45af-4c0a-8d1c-7f70f78940a5}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM POU_readSupvData
 VAR
+	
+	rUpdateRate : TIME := T#900MS;
 	sNetId: T_AmsNetId := SUPVams.sNetId;	// '5.30.23.91.1.1';
 	nPort: T_AmsPort := SUPVams.nPort; 		// 851
-	
-	FB_ReadAmsValue_Fp: FB_ReadAmsValue;
-	FB_ReadAmsValue_SepLevel: FB_ReadAmsValue;
-	FB_ReadAmsValue_R5: FB_ReadAmsValue;
+
 	nFpReadErrorId: UDINT;
 	bFpReadError: BOOL;
-	nSepLevelReadErrorId: UDINT;
-	nR5ReadErrorId: UDINT;
-	bSepLevelReadError: BOOL;
-	bR5ReadError: BOOL;
+
 	
-	FB_ReadAmsValue_SepTempSP: FB_ReadAmsValue;
-	nSepTempSPReadErrorId: UDINT;
-	bSepTempSPReadError: BOOL;
+	FB_ReadAmsValue_Fp: FB_ReadAmsValue;
+	FB_ReadAmsValue_SPStripperLevel: FB_ReadAmsValue;
+	FB_ReadAmsValue_SPPctG: FB_ReadAmsValue;
+	
+	bLStripReadError: BOOL;
+	nFLStripReadErrorId: UDINT;
+	bPctGReadError: BOOL;
+	nPctGreadErrorId: UDINT;
 END_VAR
 
 ]]></Declaration>
@@ -114,7 +115,7 @@ END_VAR
                         <l2 n="InputItems" cet="BoxTreeOperand">
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"T#900ms"</v>
+                              <v n="Operand">"rUpdateRate"</v>
                               <v n="Type">"TIME"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -290,7 +291,7 @@ END_VAR
                       <o n="OutputItems" t="OutputItemList">
                         <l2 n="OutputItems" cet="Operand">
                           <o>
-                            <v n="Operand">"bSepLevelReadError"</v>
+                            <v n="Operand">"bLStripReadError"</v>
                             <v n="Type">"BOOL"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -303,7 +304,7 @@ END_VAR
                             <v n="LValue">true</v>
                             <v n="Boolean">false</v>
                             <v n="IsInstance">false</v>
-                            <v n="Id">286L</v>
+                            <v n="Id">344L</v>
                           </o>
                         </l2>
                       </o>
@@ -315,7 +316,7 @@ END_VAR
                       <o n="RValue" t="BoxTreeBox">
                         <v n="BoxType">"FB_ReadAmsValue"</v>
                         <o n="Instance" t="Operand">
-                          <v n="Operand">"FB_ReadAmsValue_SepLevel"</v>
+                          <v n="Operand">"FB_ReadAmsValue_SPStripperLevel"</v>
                           <v n="Type">"FB_ReadAmsValue"</v>
                           <v n="Comment">""</v>
                           <v n="SymbolComment">""</v>
@@ -328,13 +329,13 @@ END_VAR
                           <v n="LValue">false</v>
                           <v n="Boolean">false</v>
                           <v n="IsInstance">true</v>
-                          <v n="Id">283L</v>
+                          <v n="Id">322L</v>
                         </o>
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
                             <n />
                             <o>
-                              <v n="Operand">"nSepLevelReadErrorId"</v>
+                              <v n="Operand">"nFLStripReadErrorId"</v>
                               <v n="Type">"UDINT"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -347,7 +348,7 @@ END_VAR
                               <v n="LValue">true</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">274L</v>
+                              <v n="Id">324L</v>
                             </o>
                           </l2>
                         </o>
@@ -360,7 +361,7 @@ END_VAR
                         <l2 n="InputItems" cet="BoxTreeOperand">
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"T#900ms"</v>
+                              <v n="Operand">"rUpdateRate"</v>
                               <v n="Type">"TIME"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -373,9 +374,9 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">224L</v>
+                              <v n="Id">326L</v>
                             </o>
-                            <v n="Id">223L</v>
+                            <v n="Id">325L</v>
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
@@ -392,9 +393,9 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">226L</v>
+                              <v n="Id">328L</v>
                             </o>
-                            <v n="Id">225L</v>
+                            <v n="Id">327L</v>
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
@@ -411,14 +412,14 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">228L</v>
+                              <v n="Id">330L</v>
                             </o>
-                            <v n="Id">227L</v>
+                            <v n="Id">329L</v>
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"'GVL.L_SEPARATOR_SP'"</v>
-                              <v n="Type">"STRING(INT#18)"</v>
+                              <v n="Operand">"'GVL.L_STRIPPER_SP'"</v>
+                              <v n="Type">"STRING(INT#17)"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -430,13 +431,13 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">230L</v>
+                              <v n="Id">332L</v>
                             </o>
-                            <v n="Id">229L</v>
+                            <v n="Id">331L</v>
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"ADR(GVL.L_SEPARATOR_SP)"</v>
+                              <v n="Operand">"ADR(GVL.L_STRIPPER_SP)"</v>
                               <v n="Type">"POINTER TO LREAL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -449,13 +450,13 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">232L</v>
+                              <v n="Id">334L</v>
                             </o>
-                            <v n="Id">231L</v>
+                            <v n="Id">333L</v>
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"sizeof(GVL.L_SEPARATOR_SP)"</v>
+                              <v n="Operand">"sizeof(GVL.L_STRIPPER_SP)"</v>
                               <v n="Type">"UINT"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -468,9 +469,9 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">234L</v>
+                              <v n="Id">336L</v>
                             </o>
-                            <v n="Id">233L</v>
+                            <v n="Id">335L</v>
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
@@ -487,9 +488,9 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">236L</v>
+                              <v n="Id">338L</v>
                             </o>
-                            <v n="Id">235L</v>
+                            <v n="Id">337L</v>
                           </o>
                         </l2>
                         <o n="InputParam" t="ParamList">
@@ -528,15 +529,15 @@ END_VAR
                         <n n="STSnippet" />
                         <v n="ContainsExtensibleInputs">false</v>
                         <v n="ProvidesSTSnippet">false</v>
-                        <v n="Id">284L</v>
+                        <v n="Id">323L</v>
                       </o>
-                      <v n="Id">287L</v>
+                      <v n="Id">345L</v>
                     </o>
                     <o>
                       <o n="OutputItems" t="OutputItemList">
                         <l2 n="OutputItems" cet="Operand">
                           <o>
-                            <v n="Operand">"bR5ReadError"</v>
+                            <v n="Operand">"bPctGReadError"</v>
                             <v n="Type">"BOOL"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -549,7 +550,7 @@ END_VAR
                             <v n="LValue">true</v>
                             <v n="Boolean">false</v>
                             <v n="IsInstance">false</v>
-                            <v n="Id">289L</v>
+                            <v n="Id">383L</v>
                           </o>
                         </l2>
                       </o>
@@ -561,7 +562,7 @@ END_VAR
                       <o n="RValue" t="BoxTreeBox">
                         <v n="BoxType">"FB_ReadAmsValue"</v>
                         <o n="Instance" t="Operand">
-                          <v n="Operand">"FB_ReadAmsValue_R5"</v>
+                          <v n="Operand">"FB_ReadAmsValue_SPPctG"</v>
                           <v n="Type">"FB_ReadAmsValue"</v>
                           <v n="Comment">""</v>
                           <v n="SymbolComment">""</v>
@@ -574,13 +575,13 @@ END_VAR
                           <v n="LValue">false</v>
                           <v n="Boolean">false</v>
                           <v n="IsInstance">true</v>
-                          <v n="Id">269L</v>
+                          <v n="Id">365L</v>
                         </o>
                         <o n="OutputItems" t="OutputItemList">
                           <l2 n="OutputItems" cet="Operand">
                             <n />
                             <o>
-                              <v n="Operand">"nR5ReadErrorId"</v>
+                              <v n="Operand">"nPctGreadErrorId"</v>
                               <v n="Type">"UDINT"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -593,7 +594,7 @@ END_VAR
                               <v n="LValue">true</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">271L</v>
+                              <v n="Id">367L</v>
                             </o>
                           </l2>
                         </o>
@@ -606,7 +607,7 @@ END_VAR
                         <l2 n="InputItems" cet="BoxTreeOperand">
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"T#900ms"</v>
+                              <v n="Operand">"rUpdateRate"</v>
                               <v n="Type">"TIME"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -619,9 +620,9 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">254L</v>
+                              <v n="Id">369L</v>
                             </o>
-                            <v n="Id">253L</v>
+                            <v n="Id">368L</v>
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
@@ -638,9 +639,9 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">256L</v>
+                              <v n="Id">371L</v>
                             </o>
-                            <v n="Id">255L</v>
+                            <v n="Id">370L</v>
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
@@ -657,14 +658,14 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">258L</v>
+                              <v n="Id">373L</v>
                             </o>
-                            <v n="Id">257L</v>
+                            <v n="Id">372L</v>
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"'GVL.RI[5]'"</v>
-                              <v n="Type">"STRING(INT#9)"</v>
+                              <v n="Operand">"'GVL.PCT_G_SP'"</v>
+                              <v n="Type">"STRING(INT#12)"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
                               <v n="Address">""</v>
@@ -676,13 +677,13 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">260L</v>
+                              <v n="Id">375L</v>
                             </o>
-                            <v n="Id">259L</v>
+                            <v n="Id">374L</v>
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"ADR(GVL.RI[5])"</v>
+                              <v n="Operand">"ADR(GVL.PCT_G_SP)"</v>
                               <v n="Type">"POINTER TO LREAL"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -695,13 +696,13 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">262L</v>
+                              <v n="Id">377L</v>
                             </o>
-                            <v n="Id">261L</v>
+                            <v n="Id">376L</v>
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
-                              <v n="Operand">"sizeof(GVL.RI[5])"</v>
+                              <v n="Operand">"sizeof(GVL.PCT_G_SP)"</v>
                               <v n="Type">"UINT"</v>
                               <v n="Comment">""</v>
                               <v n="SymbolComment">""</v>
@@ -714,9 +715,9 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">264L</v>
+                              <v n="Id">379L</v>
                             </o>
-                            <v n="Id">263L</v>
+                            <v n="Id">378L</v>
                           </o>
                           <o>
                             <o n="Operand" t="Operand">
@@ -733,9 +734,9 @@ END_VAR
                               <v n="LValue">false</v>
                               <v n="Boolean">false</v>
                               <v n="IsInstance">false</v>
-                              <v n="Id">266L</v>
+                              <v n="Id">381L</v>
                             </o>
-                            <v n="Id">265L</v>
+                            <v n="Id">380L</v>
                           </o>
                         </l2>
                         <o n="InputParam" t="ParamList">
@@ -774,255 +775,9 @@ END_VAR
                         <n n="STSnippet" />
                         <v n="ContainsExtensibleInputs">false</v>
                         <v n="ProvidesSTSnippet">false</v>
-                        <v n="Id">270L</v>
+                        <v n="Id">366L</v>
                       </o>
-                      <v n="Id">290L</v>
-                    </o>
-                    <o>
-                      <o n="OutputItems" t="OutputItemList">
-                        <l2 n="OutputItems" cet="Operand">
-                          <o>
-                            <v n="Operand">"bSepTempSPReadError"</v>
-                            <v n="Type">"BOOL"</v>
-                            <v n="Comment">""</v>
-                            <v n="SymbolComment">""</v>
-                            <v n="Address">""</v>
-                            <o n="Flags" t="Flags">
-                              <v n="Flags">0</v>
-                              <v n="Fixed">false</v>
-                              <v n="Extensible">false</v>
-                            </o>
-                            <v n="LValue">true</v>
-                            <v n="Boolean">false</v>
-                            <v n="IsInstance">false</v>
-                            <v n="Id">328L</v>
-                          </o>
-                        </l2>
-                      </o>
-                      <o n="Flags" t="Flags">
-                        <v n="Flags">0</v>
-                        <v n="Fixed">false</v>
-                        <v n="Extensible">false</v>
-                      </o>
-                      <o n="RValue" t="BoxTreeBox">
-                        <v n="BoxType">"FB_ReadAmsValue"</v>
-                        <o n="Instance" t="Operand">
-                          <v n="Operand">"FB_ReadAmsValue_SepTempSP"</v>
-                          <v n="Type">"FB_ReadAmsValue"</v>
-                          <v n="Comment">""</v>
-                          <v n="SymbolComment">""</v>
-                          <v n="Address">""</v>
-                          <o n="Flags" t="Flags">
-                            <v n="Flags">0</v>
-                            <v n="Fixed">false</v>
-                            <v n="Extensible">false</v>
-                          </o>
-                          <v n="LValue">false</v>
-                          <v n="Boolean">false</v>
-                          <v n="IsInstance">true</v>
-                          <v n="Id">307L</v>
-                        </o>
-                        <o n="OutputItems" t="OutputItemList">
-                          <l2 n="OutputItems" cet="Operand">
-                            <n />
-                            <o>
-                              <v n="Operand">"nSepTempSPReadErrorId"</v>
-                              <v n="Type">"UDINT"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">true</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">309L</v>
-                            </o>
-                          </l2>
-                        </o>
-                        <o n="Flags" t="Flags">
-                          <v n="Flags">0</v>
-                          <v n="Fixed">true</v>
-                          <v n="Extensible">false</v>
-                        </o>
-                        <n n="InputFlags" />
-                        <l2 n="InputItems" cet="BoxTreeOperand">
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">"T#900ms"</v>
-                              <v n="Type">"TIME"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">311L</v>
-                            </o>
-                            <v n="Id">310L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">"sNetId"</v>
-                              <v n="Type">"T_AmsNetId"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">313L</v>
-                            </o>
-                            <v n="Id">312L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">"nPort"</v>
-                              <v n="Type">"T_AmsPort"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">315L</v>
-                            </o>
-                            <v n="Id">314L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">"'GVL.SepTempSP'"</v>
-                              <v n="Type">"STRING(INT#13)"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">317L</v>
-                            </o>
-                            <v n="Id">316L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">"ADR(GVL.SepTempSP)"</v>
-                              <v n="Type">"POINTER TO LREAL"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">319L</v>
-                            </o>
-                            <v n="Id">318L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">"sizeof(GVL.SepTempSP)"</v>
-                              <v n="Type">"UINT"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">321L</v>
-                            </o>
-                            <v n="Id">320L</v>
-                          </o>
-                          <o>
-                            <o n="Operand" t="Operand">
-                              <v n="Operand">"T#5000ms"</v>
-                              <v n="Type">"TIME"</v>
-                              <v n="Comment">""</v>
-                              <v n="SymbolComment">""</v>
-                              <v n="Address">""</v>
-                              <o n="Flags" t="Flags">
-                                <v n="Flags">0</v>
-                                <v n="Fixed">false</v>
-                                <v n="Extensible">false</v>
-                              </o>
-                              <v n="LValue">false</v>
-                              <v n="Boolean">false</v>
-                              <v n="IsInstance">false</v>
-                              <v n="Id">323L</v>
-                            </o>
-                            <v n="Id">322L</v>
-                          </o>
-                        </l2>
-                        <o n="InputParam" t="ParamList">
-                          <l2 n="Names" cet="String">
-                            <v>tUpdate</v>
-                            <v>sNetId</v>
-                            <v>nPort</v>
-                            <v>sVarName</v>
-                            <v>nDestAddr</v>
-                            <v>nDestLen</v>
-                            <v>tReadTimeout</v>
-                          </l2>
-                          <l2 n="Types" cet="String">
-                            <v>TIME</v>
-                            <v>T_AmsNetId</v>
-                            <v>T_AmsPort</v>
-                            <v>STRING(255)</v>
-                            <v>PVOID</v>
-                            <v>UDINT</v>
-                            <v>TIME</v>
-                          </l2>
-                        </o>
-                        <o n="OutputParam" t="ParamList">
-                          <l2 n="Names" cet="String">
-                            <v>bReadError</v>
-                            <v>nReadErrorId</v>
-                          </l2>
-                          <l2 n="Types" cet="String">
-                            <v>BOOL</v>
-                            <v>UDINT</v>
-                          </l2>
-                        </o>
-                        <v n="CallType" t="Operator">FunctionBlock</v>
-                        <v n="EN">false</v>
-                        <v n="ENO">false</v>
-                        <n n="STSnippet" />
-                        <v n="ContainsExtensibleInputs">false</v>
-                        <v n="ProvidesSTSnippet">false</v>
-                        <v n="Id">308L</v>
-                      </o>
-                      <v n="Id">329L</v>
+                      <v n="Id">384L</v>
                     </o>
                   </l2>
                   <l2 n="Connectors" />

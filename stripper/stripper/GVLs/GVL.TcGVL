@@ -16,6 +16,9 @@ VAR_GLOBAL
 	RECYC_VALVE_SP					:	LREAL;	// Recycle valve position
 	STEAM_VALVE_SP					:	LREAL;	// Steam valve position
 	L_AGITATOR_SP					:	LREAL;	// agitator setting		
+	
+	// Intermediate values
+	Fp							:	LREAL; 		
 
 	// actual production metrics
 	COST						:	LREAL :=0.0;
@@ -23,19 +26,21 @@ VAR_GLOBAL
 
 	// process variables
 	XMEAS						:	ARRAY[1..41] OF LREAL;
+	XMEAS_TO_SUPV				:	ARRAY[1..10] OF LREAL; // 10,11-14,20,22,29-36
+	
 	XMV							:	ARRAY[1..12] OF LREAL;
+	XMV_TO_SUPV					:	ARRAY[1..2] OF LREAL;  // 5,6,7
 	
 	// intermediate variables
 	SEP_TEMP_SP					:	LREAL;	// separator temperaure setpoint
-	RI							:	ARRAY[1..6] OF LREAL;	// ratio trimming outputs
+	RI							:	ARRAY[1..7] OF LREAL;	// ratio trimming outputs
 	EADJ						:	LREAL;	// adjustment to production rate
-	PCTG_SP						:	LREAL;	// setpoint for precent G
 	
 	// shutdown indicator
 	SD_FLAG						: 	BOOL	:= FALSE;
 
 	// operating time
-	OPTIME					:	LREAL := 0.0;	
+	OPTIME					:	LREAL := 0.0;		
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

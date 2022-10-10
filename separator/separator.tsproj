@@ -10,7 +10,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{073E8A4A-188B-4896-A151-8D8CD91D567E}" Name="separator" PrjFilePath="separator\separator.plcproj" TmcFilePath="separator\separator.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="separator\separator.tmc" TmcHash="{68518DC3-72D7-EA16-0E6D-53C7F7D49913}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="separator\separator.tmc" TmcHash="{20F4A670-8F6D-B07F-7E1D-8325E3691BD7}">
 					<Name>separator Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Contexts>

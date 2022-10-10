@@ -18,7 +18,8 @@ VAR_GLOBAL
 	L_AGITATOR_SP					:	LREAL;	// agitator setting		
 	
 	// Intermediate values
-	Fp							:	LREAL; 		
+	Fp							:	LREAL; 	
+	SepTempSP					: 	LREAL;	
 
 	// actual production metrics
 	COST						:	LREAL :=0.0;
