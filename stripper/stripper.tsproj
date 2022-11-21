@@ -10,7 +10,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{6ACA0F60-792B-4679-918A-FE3F8BC1FD87}" Name="stripper" PrjFilePath="stripper\stripper.plcproj" TmcFilePath="stripper\stripper.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="stripper\stripper.tmc" TmcHash="{00256019-63F0-6ED8-7147-8E866566796D}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="stripper\stripper.tmc" TmcHash="{1AF9A59A-0880-AB32-233E-FE761E552770}">
 					<Name>stripper Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Contexts>

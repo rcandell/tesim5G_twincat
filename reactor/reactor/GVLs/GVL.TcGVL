@@ -4,12 +4,12 @@
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
 	// setpoints
-	PROD_RATE_SP					:	LREAL	:= 0.0;	// production rate 
-	L_STRIPPER_SP					:	LREAL	:= 0.0;	// stripper level
-	L_SEPARATOR_SP					:	LREAL	:= 0.0;	// separator level
-	L_REACTOR_SP					:	LREAL	:= 0.0;	// reactor level
-	P_REACTOR_SP					:	LREAL;	// reactor pressure
-	PCT_G_SP						:	LREAL;	// Mole percent G
+	//PROD_RATE_SP					:	LREAL;	// production rate 
+	//L_STRIPPER_SP					:	LREAL;	// stripper level
+	//L_SEPARATOR_SP					:	LREAL;	// separator level
+	//L_REACTOR_SP					:	LREAL;	// reactor level
+	//P_REACTOR_SP					:	LREAL;	// reactor pressure
+	//PCT_G_SP						:	LREAL;	// Mole percent G
 	YA_SP							: 	LREAL;	// yA 
 	YAC_SP							:	LREAL;	// yAC
 	T_REACTOR_SP					:	LREAL;	// reactor temperature
@@ -22,9 +22,9 @@ VAR_GLOBAL
 	RI							:	ARRAY[1..6] OF LREAL;	// ratio trimming outputs	
 
 	// process variables
-	XMEAS						:	ARRAY[1..41] OF LREAL;
+	//XMEAS						:	ARRAY[1..41] OF LREAL;
 	XMEAS_TO_SUPV				:	ARRAY[1..16] OF LREAL;
-	XMV							:	ARRAY[1..12] OF LREAL;
+	//XMV							:	ARRAY[1..12] OF LREAL;
 	XMV_TO_SUPV					:	ARRAY[1..7] OF LREAL;
 
 	
@@ -32,7 +32,7 @@ VAR_GLOBAL
 	SD_FLAG						: 	BOOL	:= FALSE;
 
 	// operating time
-	OPTIME					:	LREAL := 0.0;	
+	//OPTIME					:	LREAL := 0.0;	
 	
 END_VAR]]></Declaration>
   </GVL>

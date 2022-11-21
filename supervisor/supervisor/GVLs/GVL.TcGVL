@@ -28,12 +28,12 @@ VAR_GLOBAL
 	PctG						:	LREAL :=0.0;
 
 	// process variables
-	XMEAS						:	ARRAY[1..41] OF LREAL;
+	XMEAS						:	ARRAY[1..41] OF LREAL;  // this is formed from the variable copied from the various process control parts
 	XMEAS_FROM_REACTOR			:	ARRAY[1..16] OF LREAL;
-	XMEAS_FROM_SEPARATOR		:	ARRAY[1..16] OF LREAL;
+	XMEAS_FROM_SEPARATOR		:	ARRAY[1..15] OF LREAL;
 	XMEAS_FROM_STRIPPER			:	ARRAY[1..10] OF LREAL;
 	
-	XMV							:	ARRAY[1..12] OF LREAL;
+	XMV							:	ARRAY[1..12] OF LREAL;  // this is formed from the variable copied from the various process control parts
 	XMV_FROM_REACTOR			:	ARRAY[1..7] OF LREAL;
 	XMV_FROM_SEPARATOR			:	ARRAY[1..3] OF LREAL;
 	XMV_FROM_STRIPPER			:	ARRAY[1..2] OF LREAL;

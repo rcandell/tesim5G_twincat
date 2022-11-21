@@ -4,15 +4,15 @@
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
 	// setpoints
-	PROD_RATE_SP					:	LREAL	:= 22.89;	// production rate
-	L_STRIPPER_SP					:	LREAL	:= 50.0;	// stripper level
+	//PROD_RATE_SP					:	LREAL	:= 22.89;	// production rate
+	//L_STRIPPER_SP					:	LREAL	:= 50.0;	// stripper level
 	L_SEPARATOR_SP					:	LREAL	:= 50.0;	// separator level
-	L_REACTOR_SP					:	LREAL	:= 65.0;	// reactor level
-	P_REACTOR_SP					:	LREAL;	// reactor pressure
+	//L_REACTOR_SP					:	LREAL	:= 65.0;	// reactor level
+	//P_REACTOR_SP					:	LREAL;	// reactor pressure
 	PCT_G_SP						:	LREAL;	// Mole percent G
-	YA_SP							: 	LREAL;	// yA 
-	YAC_SP							:	LREAL;	// yAC
-	T_REACTOR_SP					:	LREAL;	// reactor temperature
+	//YA_SP							: 	LREAL;	// yA 
+	//YAC_SP							:	LREAL;	// yAC
+	//T_REACTOR_SP					:	LREAL;	// reactor temperature
 	RECYC_VALVE_SP					:	LREAL;	// Recycle valve position
 	STEAM_VALVE_SP					:	LREAL;	// Steam valve position
 	L_AGITATOR_SP					:	LREAL;	// agitator setting		
@@ -27,7 +27,7 @@ VAR_GLOBAL
 
 	// process variables
 	XMEAS						:	ARRAY[1..41] OF LREAL;
-	XMEAS_TO_SUPV				:	ARRAY[1..16] OF LREAL; // 10,11-14,20,22,29-36
+	XMEAS_TO_SUPV				:	ARRAY[1..15] OF LREAL; // 10,11-14,20,22,29-36
 	
 	XMV							:	ARRAY[1..12] OF LREAL;
 	XMV_TO_SUPV					:	ARRAY[1..3] OF LREAL;  // 5,6,7
@@ -39,10 +39,10 @@ VAR_GLOBAL
 	PCTG_SP						:	LREAL;	// setpoint for precent G
 	
 	// shutdown indicator
-	SD_FLAG						: 	BOOL	:= FALSE;
+	//SD_FLAG						: 	BOOL	:= FALSE;
 
 	// operating time
-	OPTIME					:	LREAL := 0.0;		
+	//OPTIME					:	LREAL := 0.0;		
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

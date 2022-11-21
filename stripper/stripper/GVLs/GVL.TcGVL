@@ -4,35 +4,35 @@
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
 	// setpoints
-	PROD_RATE_SP					:	LREAL	:= 22.89;	// production rate
+	//PROD_RATE_SP					:	LREAL	:= 22.89;	// production rate
 	L_STRIPPER_SP					:	LREAL	:= 50.0;	// stripper level
-	L_SEPARATOR_SP					:	LREAL	:= 50.0;	// separator level
-	L_REACTOR_SP					:	LREAL	:= 65.0;	// reactor level
-	P_REACTOR_SP					:	LREAL;	// reactor pressure
+	//L_SEPARATOR_SP					:	LREAL	:= 50.0;	// separator level
+	//L_REACTOR_SP					:	LREAL	:= 65.0;	// reactor level
+	//P_REACTOR_SP					:	LREAL;	// reactor pressure
 	PCT_G_SP						:	LREAL;	// Mole percent G
-	YA_SP							: 	LREAL;	// yA 
-	YAC_SP							:	LREAL;	// yAC
-	T_REACTOR_SP					:	LREAL;	// reactor temperature
-	RECYC_VALVE_SP					:	LREAL;	// Recycle valve position
+	//YA_SP							: 	LREAL;	// yA 
+	//YAC_SP							:	LREAL;	// yAC
+	//T_REACTOR_SP					:	LREAL;	// reactor temperature
+	//RECYC_VALVE_SP					:	LREAL;	// Recycle valve position
 	STEAM_VALVE_SP					:	LREAL;	// Steam valve position
-	L_AGITATOR_SP					:	LREAL;	// agitator setting		
+	//L_AGITATOR_SP					:	LREAL;	// agitator setting		
 	
 	// Intermediate values
 	Fp							:	LREAL; 		
 
 	// actual production metrics
 	COST						:	LREAL :=0.0;
-	PctG						:	LREAL :=0.0;
+	PctG						:	LREAL :=0.0;		// the trimmed PCT G setpoint at stripper
 
 	// process variables
-	XMEAS						:	ARRAY[1..41] OF LREAL;
-	XMEAS_TO_SUPV				:	ARRAY[1..10] OF LREAL; // 10,11-14,20,22,29-36
+	//XMEAS						:	ARRAY[1..41] OF LREAL;
+	XMEAS_TO_SUPV				:	ARRAY[1..10] OF LREAL; // 10-14,20,22,29-36
 	
-	XMV							:	ARRAY[1..12] OF LREAL;
+	//XMV							:	ARRAY[1..12] OF LREAL;
 	XMV_TO_SUPV					:	ARRAY[1..2] OF LREAL;  // 5,6,7
 	
 	// intermediate variables
-	SEP_TEMP_SP					:	LREAL;	// separator temperaure setpoint
+	//SEP_TEMP_SP					:	LREAL;	// separator temperaure setpoint
 	RI							:	ARRAY[1..7] OF LREAL;	// ratio trimming outputs
 	EADJ						:	LREAL;	// adjustment to production rate
 	

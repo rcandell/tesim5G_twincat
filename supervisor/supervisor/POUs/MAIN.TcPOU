@@ -5,6 +5,7 @@
 VAR
 	
 	tonCopy :	TON;
+	checkPctG: LREAL;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -14,6 +15,8 @@ tonCopy(in:=NOT(tonCopy.Q), PT:=T#900MS);
 IF tonCopy.Q THEN
 	POU_copyXmeasXmv();
 END_IF
+
+
 	
 
 ]]></ST>
@@ -24,7 +27,10 @@ END_IF
       <LineId Id="14" Count="0" />
       <LineId Id="11" Count="0" />
       <LineId Id="2" Count="0" />
-      <LineId Id="15" Count="1" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="16" Count="0" />
       <LineId Id="8" Count="0" />
       <LineId Id="7" Count="0" />
     </LineIds>

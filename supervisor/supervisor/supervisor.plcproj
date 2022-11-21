@@ -17,28 +17,9 @@
     <LibraryReferences>{5f399472-e17d-4d23-8b65-924c0c546f1b}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="FB\FB_ReadAmsValue.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="FB\FB_WriteAmsValue.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="GVLs\GVL.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
-    </Compile>
-    <Compile Include="GVLs\SeparatorAms.TcGVL">
-      <SubType>Code</SubType>
-      <LinkAlways>true</LinkAlways>
-    </Compile>
-    <Compile Include="GVLs\SupvAms.TcGVL">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="GVLs\ReactorAms.TcGVL">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="GVLs\StripperAms.TcGVL">
-      <SubType>Code</SubType>
     </Compile>
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
